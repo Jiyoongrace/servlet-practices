@@ -13,7 +13,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter pw = resp.getWriter();
-        pw.println("<h1>Hello JSP</h1>");
+        pw.println("<h1>안녕~</h1>");
     }
 
     @Override
