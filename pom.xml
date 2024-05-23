@@ -14,6 +14,11 @@
         <module>guestbook2</module>
     </modules>
 
+
+    <properties>
+        <tomcat.deploy.url>http://192.168.0.195:8080/manager/text</tomcat.deploy.url>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -22,7 +27,7 @@
                 <version>2.2</version>
 
                 <configuration>
-                    <url>http://192.168.0.195:8080/manager/text</url>
+                    <url>${tomcat.deploy.url}</url>
                     <server>tomcat-poscodx</server>
                 </configuration>
             </plugin>
