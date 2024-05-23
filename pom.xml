@@ -16,7 +16,7 @@
 
 
     <properties>
-        <tomcat.deploy.url>http://192.168.0.195:8080/manager/text</tomcat.deploy.url>
+        <tomcat.deploy.url>http://192.168.0.195:8080/manager/html</tomcat.deploy.url>
     </properties>
 
     <build>
