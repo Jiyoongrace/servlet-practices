@@ -18,7 +18,6 @@ public class GuestbookServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // post 방식으로 전달받는 파라미터 값의 엔코딩 처리
         request.setCharacterEncoding("utf-8");
         String action = request.getParameter("a");
 
@@ -30,7 +29,7 @@ public class GuestbookServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/gb");
 
         } else if (("deleteform").equals(action)) {
-            // 3. view로 포워딩
+
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/deleteform.jsp");
             rd.forward(request, response);
 
@@ -46,16 +45,14 @@ public class GuestbookServlet extends HttpServlet {
 
             new GuestbookDao().insert(vo);
 
-            // 2 redirect 응답
             response.sendRedirect(request.getContextPath() + "/gb");
 
         } else {
             /* default request(action) */
-            // 1. 요청처리
             List<GuestbookVo> list = new GuestbookDao().findAll();
-            // 2. request범위에 데이터(객체) 저장
+
             request.setAttribute("list", list);
-            // 3. view로 포워딩
+
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
             rd.forward(request, response);
         }
