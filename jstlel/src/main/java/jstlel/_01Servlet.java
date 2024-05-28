@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class _01Servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -33,6 +35,15 @@ public class _01Servlet extends HttpServlet {
         req.setAttribute("fval", fVal);
         req.setAttribute("bval", bVal);
         req.setAttribute("sval", sVal);
+
+        // map
+        Map<String, Object> map = new HashMap<>();
+        map.put("ival", iVal);
+        map.put("lval", lVal);
+        map.put("fval", fVal);
+        map.put("bval", bVal);
+        map.put("sval", sVal);
+        req.setAttribute("m", map);
 
         req.getRequestDispatcher("/WEB-INF/views/01.jsp")
                 .forward(req, resp);
