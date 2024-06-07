@@ -1,8 +1,6 @@
 package guestbook.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -19,21 +17,20 @@ public class GuestbookServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+
         String action = request.getParameter("a");
 
-        if ("delete".equals(action)) {
-            String password = request.getParameter("password");
-            Long no = Long.parseLong(request.getParameter("no"));
-
-            new GuestbookDao().delete(no, password);
-            response.sendRedirect(request.getContextPath() + "/gb");
-
-        } else if (("deleteform").equals(action)) {
-
+        if("deleteform".equals(action)) {
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/deleteform.jsp");
             rd.forward(request, response);
+        } else if("delete".equals(action)) {
+            String no = request.getParameter("no");
+            String password = request.getParameter("password");
 
-        } else if ("add".equals(action)) {
+            new GuestbookDao().deleteByNoAndPassword(Long.parseLong(no), password);
+
+            response.sendRedirect(request.getContextPath() + "/gb");
+        } else if("add".equals(action)) {
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String contents = request.getParameter("contents");
@@ -44,11 +41,8 @@ public class GuestbookServlet extends HttpServlet {
             vo.setContents(contents);
 
             new GuestbookDao().insert(vo);
-
             response.sendRedirect(request.getContextPath() + "/gb");
-
         } else {
-            /* default request(action) */
             List<GuestbookVo> list = new GuestbookDao().findAll();
 
             request.setAttribute("list", list);
@@ -61,5 +55,4 @@ public class GuestbookServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
 }
