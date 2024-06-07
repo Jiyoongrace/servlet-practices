@@ -38,7 +38,7 @@
 <img src="" >
 <img src='images/loopy.jpg' style='width:80px; border:1px solid #999'/>
 <img src='/helloweb/images/loopy.jpg' style='width:80px; border:1px solid #999'/>
-<img src='http://localhost:8080/helloweb/images/loopy.jpg' style='width:80px; border:1px solid #999'/>
+<img src='http://192.168.0.195:8080/helloweb/images/loopy.jpg' style='width:80px; border:1px solid #999'/>
 <br/>
 <a href='form.jsp'>폼으로 가기</a>
 <br/>

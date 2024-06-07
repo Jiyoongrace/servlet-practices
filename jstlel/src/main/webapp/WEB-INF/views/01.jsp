@@ -46,8 +46,8 @@
     </if>
 
     <h4>요청 파라미터</h4>
-    --${param.no + 10 }--<br> <!-- http://localhost:8080/jstlel/01?no=20 -->
-    --${param.name }--<br> <!-- http://localhost:8080/jstlel/01?no=20&name=홍길동 -->
+    --${param.no + 10 }--<br> <!-- http://192.168.0.195:8080/jstlel/01?no=20 -->
+    --${param.name }--<br> <!-- http://192.168.0.195:8080/jstlel/01?no=20&name=홍길동 -->
 
     <h4>Context Path</h4>
     ${pageContext.request.contextPath }
